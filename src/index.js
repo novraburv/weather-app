@@ -2,12 +2,9 @@
 
 import 'normalize.css'
 import './index.scss'
+import { showSpinner } from './js/loadingSpinner'
 
-function init () {
-  const icon = document.createElement('i')
-  icon.classList.add('fa-solid', 'fa-circle-plus')
+export const app = document.querySelector('#app')
 
-  document.querySelector('#app').append(icon)
-}
-
-init()
+// initialize
+showSpinner()
