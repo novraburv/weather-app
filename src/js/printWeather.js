@@ -40,11 +40,11 @@ export function printWeather (data) {
   misc.classList.add('misc')
 
   const fields = [
-    { name: 'pressure', api: 'main.pressure', unit: 'hPa' },
-    { name: 'humidity', api: 'main.humidity', unit: '%' },
-    { name: 'cloud', api: 'clouds.all', unit: '%' },
-    { name: 'wind', api: 'wind.speed', unit: 'm/s' },
-    { name: 'wind_degree', api: 'wind.deg', unit: 'o' }
+    { name: 'pressure', api: 'main.pressure', unit: 'hPa', icon: 'gauge' },
+    { name: 'humidity', api: 'main.humidity', unit: '%', icon: 'droplet' },
+    { name: 'cloud', api: 'clouds.all', unit: '%', icon: 'cloud' },
+    { name: 'wind', api: 'wind.speed', unit: 'm/s', icon: 'wind' },
+    { name: 'wind_degree', api: 'wind.deg', unit: 'o', icon: 'compass' }
   ]
 
   fields.forEach(field => {
@@ -52,8 +52,7 @@ export function printWeather (data) {
     fieldContainer.classList.add('misc__container')
 
     const icon = document.createElement('i')
-    icon.classList.add('misc__icon')
-    icon.textContent = field.name
+    icon.classList.add('misc__icon', 'fa-solid', `fa-${field.icon}`)
 
     const number = document.createElement('div')
     number.classList.add('misc__number')

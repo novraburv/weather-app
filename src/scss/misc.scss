@@ -1,0 +1,22 @@
+@import "mixins";
+
+.misc {
+  @include center;
+  flex-flow: row wrap;
+  background: gold;
+  &__container {
+    flex: 0 1 33%;
+    @include center;
+    flex-flow: column nowrap;
+    gap: 0.5em;
+    width: 100px;
+    padding: 1em;
+    box-sizing: border-box;
+  }
+  &__icon {
+    font-size: 1.5em;
+  }
+  &__number {
+    font-weight: 100;
+  }
+}
