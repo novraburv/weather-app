@@ -20,3 +20,10 @@
     font-weight: 100;
   }
 }
+
+@media (min-width: 768px) {
+  .misc {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+}

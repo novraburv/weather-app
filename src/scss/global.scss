@@ -1,3 +1,4 @@
+@import "mixins";
 body {
   background: gray;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
@@ -7,4 +8,18 @@ body {
   display: flex;
   flex-flow: column nowrap;
   min-height: 100vh;
+}
+
+@media (min-width: 768px) {
+  body {
+    @include center;
+    min-height: 100vh;
+  }
+  #app {
+    width: 500px;
+    height: 80vh;
+    min-height: unset;
+    border-radius: 5px;
+    box-shadow: 3px 3px 15px black, -3px -3px 15px white;
+  }
 }

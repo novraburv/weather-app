@@ -5,3 +5,10 @@
   text-transform: uppercase;
   font-weight: 900;
 }
+
+@media (min-width: 768px) {
+  .btn-loc {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+}
