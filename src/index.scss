@@ -2,12 +2,9 @@ $fa-font-path: "@fortawesome/fontawesome-free/webfonts";
 @import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
 @import "@fortawesome/fontawesome-free/scss/regular.scss";
 @import "@fortawesome/fontawesome-free/scss/solid.scss";
-@import "@fortawesome/fontawesome-free/scss/brands.scss";
+
+@import "./scss/global.scss";
 
 @import "./scss/loadingSpinner.scss";
-
-#app {
-  display: flex;
-  flex-flow: column nowrap;
-  min-height: 100vh;
-}
+@import "./scss/location.scss";
+@import "./scss/mainSection.scss";

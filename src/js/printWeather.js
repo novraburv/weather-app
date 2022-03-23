@@ -1,9 +1,9 @@
 'use strict'
 
 import { digData } from './digData'
+import { app } from '../index'
 
 export function printWeather (data) {
-  console.log(data)
   // location status
   const loc = document.createElement('div')
   loc.classList.add('btn', 'btn-loc')
@@ -14,6 +14,9 @@ export function printWeather (data) {
   const main = document.createElement('main')
   main.classList.add('main')
 
+  const basic = document.createElement('div')
+  basic.classList.add('main__basicInfo')
+
   const weatherIcon = document.createElement('img')
   weatherIcon.classList.add('main__icon')
   weatherIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
@@ -21,13 +24,15 @@ export function printWeather (data) {
 
   const temperature = document.createElement('div')
   temperature.classList.add('main__temperature')
-  temperature.textContent = `${data.main.temp}`
+  temperature.innerHTML = `${Math.round(data.main.temp)}<sup>o</sup>C`
+
+  basic.append(weatherIcon, temperature)
 
   const weatherDesc = document.createElement('div')
   weatherDesc.classList.add('main__description')
   weatherDesc.textContent = `${data.weather[0].description}`
 
-  main.append(weatherIcon, temperature, weatherDesc)
+  main.append(basic, weatherDesc)
 
   // misc section
   // contains of several fields
@@ -39,7 +44,7 @@ export function printWeather (data) {
     { name: 'humidity', api: 'main.humidity', unit: '%' },
     { name: 'cloud', api: 'clouds.all', unit: '%' },
     { name: 'wind', api: 'wind.speed', unit: 'm/s' },
-    { name: 'wind_degree', api: 'wind.degree', unit: 'o' }
+    { name: 'wind_degree', api: 'wind.deg', unit: 'o' }
   ]
 
   fields.forEach(field => {
@@ -54,7 +59,7 @@ export function printWeather (data) {
     number.classList.add('misc__number')
     number.textContent = digData(data, field.api)
 
-    const unit = document.createElement('sub')
+    const unit = document.createElement('sup')
     unit.classList.add('misc__sub')
     unit.textContent = field.unit
 
@@ -62,7 +67,9 @@ export function printWeather (data) {
     fieldContainer.append(icon, number)
 
     misc.append(fieldContainer)
-  })
 
-  return [loc, main, misc]
+    // append generated contents to app
+    if (app.children) [...app.children].forEach(child => child.remove())
+    app.append(loc, main, misc)
+  })
 }
