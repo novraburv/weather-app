@@ -1,6 +1,7 @@
 'use strict'
 
 import { app } from '../index'
+import { getWeatherWithCityName } from './getWeather'
 
 import '../scss/search.scss'
 
@@ -22,6 +23,7 @@ export function showSearchLoc () {
   input.classList.add('search__input')
   input.type = 'text'
   input.placeholder = 'london, gb'
+  input.addEventListener('keypress', getWeatherWithCityName)
 
   div.append(input, close)
   app.append(div)

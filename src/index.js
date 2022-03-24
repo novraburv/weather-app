@@ -2,7 +2,7 @@
 
 import './index.scss'
 import 'normalize.css'
-import { getWeather } from './js/getWeather'
+import { getWeatherWithGeolocation } from './js/getWeather'
 import { showSpinner } from './js/loadingSpinner'
 
 export const app = document.querySelector('#app')
@@ -18,7 +18,7 @@ try {
 }
 
 function onSuccess (position) {
-  getWeather(position)
+  getWeatherWithGeolocation(position)
 }
 
 export function onError (message) {
