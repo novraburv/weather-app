@@ -1,0 +1,16 @@
+@import "mixins";
+
+.loading {
+  @include center;
+  flex: 1;
+
+  &__icon {
+    animation: linear spinner 700ms 5;
+  }
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}

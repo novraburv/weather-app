@@ -1,13 +1,26 @@
 'use strict'
 
-import 'normalize.css'
 import './index.scss'
+import 'normalize.css'
+import { getWeatherWithGeolocation } from './js/getWeather'
+import { showSpinner } from './js/loadingSpinner'
 
-function init () {
-  const icon = document.createElement('i')
-  icon.classList.add('fa-solid', 'fa-circle-plus')
+export const app = document.querySelector('#app')
 
-  document.querySelector('#app').append(icon)
+// initialize
+showSpinner()
+
+try {
+  if (!navigator.geolocation) throw new Error("Your browser doesn't support geolocation.")
+  navigator.geolocation.getCurrentPosition(onSuccess, onError)
+} catch (err) {
+  onError(err.message)
 }
 
-init()
+function onSuccess (position) {
+  getWeatherWithGeolocation(position)
+}
+
+export function onError (message) {
+  console.error(message)
+}

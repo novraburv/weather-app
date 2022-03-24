@@ -1,0 +1,19 @@
+@import "mixins";
+
+.main {
+  flex: 1;
+  @include center;
+  flex-flow: column nowrap;
+  background: #2f2f2f;
+  color: white;
+  &__basicInfo {
+    @include center;
+    flex-flow: row nowrap;
+  }
+  &__temperature {
+    font-size: 3em;
+  }
+  &__description {
+    font-weight: 100;
+  }
+}
