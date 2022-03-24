@@ -2,12 +2,18 @@
 
 import { digData } from './digData'
 import { app } from '../index'
+import { showSearchLoc } from './showSearchLoc'
+
+import '../scss/location.scss'
+import '../scss/mainSection.scss'
+import '../scss/misc.scss'
 
 export function printWeather (data) {
   // location status
   const loc = document.createElement('div')
   loc.classList.add('btn', 'btn-loc')
   loc.textContent = `${data.name}, ${data.sys.country}`
+  loc.addEventListener('click', showSearchLoc)
 
   // main section.
   // consist of an icon, temperature and weather description.

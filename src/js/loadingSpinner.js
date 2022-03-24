@@ -1,5 +1,8 @@
 'use strict'
+
 import { app } from '../index'
+
+import '../scss/loadingSpinner.scss'
 
 export function showSpinner () {
   const container = document.createElement('div')
